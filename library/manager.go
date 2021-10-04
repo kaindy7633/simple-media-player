@@ -58,6 +58,14 @@ func (m *MusicManager) Remove(index int) *MusicEntry {
 	if index < len(m.musics)-1 {
 		// 中间元素
 		m.musics = append(m.musics[:index-1], m.musics[index+1:]...)
+	} else if index == 0 {
+		// 第一个元素
+		m.musics = make([]MusicEntry, 0)
+	} else {
+		// 最后一个元素
+		m.musics = m.musics[:index-1]
 	}
+
+	return removeMusic
 
 }
